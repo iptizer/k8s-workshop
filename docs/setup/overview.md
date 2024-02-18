@@ -62,3 +62,23 @@ When a cluster is running we could already send commands to the cluster. To do s
 * k9s (ncurse client application to quickly operate your cluster)
     * Download the binary and execute, for example from github.com.
     * Detailed instructions [here](https://k9scli.io/topics/install/).
+
+## Verify installation
+
+The following commands may be used to verify that everything is working as expected.
+
+```sh
+# Verify tools are installed with help commands
+kuebctl -h
+helm -h
+k9s -h
+# kubectl - query for all running containers in cluster
+# (-A means: In all namespaces.)
+kubectl get pods -A
+# query all installed helm charts in cluster (no output expected)
+helm list -A
+# start k9s
+k9s
+# ":po" && "0" => check all pods
+# ctrl +c => to close
+```

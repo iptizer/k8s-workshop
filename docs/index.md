@@ -4,7 +4,7 @@ This is a workshop to learn Kubernetes with the target to use it on a home/remot
 
 ## The chapters
 
-The workshop start easy with the setup of a local environment and explaining basics from the ground up. Experienced users may already proceed to the "explore" chapter. Please give feedback showing whether the content is "too heavy" or "too lightweight".
+The workshop start easy with the setup of a local environment and explaining basics from the ground up. Experienced users may already proceed to the "explore" chapter or work on the [BONUS] sections. Please give feedback showing whether the content is "too heavy" or "too lightweight". Please also ask at any time in case something is not clear.
 
 ### [Setup of a development environment](./setup/overview.md)
 
