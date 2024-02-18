@@ -1,5 +1,5 @@
 site_name: Kubernetes Workshop
-site_url: "https://xxx.xxx"
+site_url: "https://iptizer.github.io/k8s-workshop/"
 dev_addr: "127.0.0.1:8080"
 # extra_css:
 #   - "extra.css"
