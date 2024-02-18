@@ -2,6 +2,8 @@
 
 This is the repository for the k8s-workshop to be first held on the Easterhegg21 in 2024 in Regensburg.
 
+Tutorial can be found here: [https://iptizer.github.io/k8s-workshop/](https://iptizer.github.io/k8s-workshop/)
+
 ## Development
 
 Repository setup needs to be done before continuing here.
@@ -10,6 +12,10 @@ Repository setup needs to be done before continuing here.
 # run local dev server
 mkdocs serve -a 127.0.0.1:8080
 ```
+
+## Deploy
+
+GitHub Actions is configured and a push to `main` will redeploy to GitHub pages.
 
 ## Repository setup
 
