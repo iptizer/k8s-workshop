@@ -63,6 +63,12 @@ When a cluster is running we could already send commands to the cluster. To do s
     * Download the binary and execute, for example from github.com.
     * Detailed instructions [here](https://k9scli.io/topics/install/).
 
+## (optional) docker cli
+
+Building containers is not required as part of this workshop. But you may want to try it out. Building containers can be done for example with the Docker Engine. Note: There is also Docker Desktop available which is free to use for private use, probably has more comfort, but is also a heavyweight application. Docker Engine is recommended.
+
+To install Docker Engine follow these instructions: [https://docs.docker.com/engine/](https://docs.docker.com/engine/)
+
 ## Verify installation
 
 The following commands may be used to verify that everything is working as expected.

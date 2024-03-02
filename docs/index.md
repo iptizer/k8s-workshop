@@ -2,11 +2,26 @@
 
 This is a workshop to learn Kubernetes with the target to use it on a home/remote server setup.
 
+## Prerequisits
+
+To walk through this workshop the following knowledge and local setup is recommended or required:
+
+* Linux, MacOs or (not preferred) Windows laptop with 8GB, better 16GB of memory.
+* Basic computer knowledge with interacting with the command line interface.
+* Basic knowledge with Docker containers is recommended, but not needed.
+
 ## The chapters
 
-The workshop start easy with the setup of a local environment and explaining basics from the ground up. Experienced users may already proceed to the "explore" chapter or work on the [BONUS] sections. Please give feedback showing whether the content is "too heavy" or "too lightweight". Please also ask at any time in case something is not clear.
+The workshop start easy with the setup of a local environment and explaining basics from the ground up. Experienced users may already proceed to the "explore" chapter or work on the challenge sections. Please give feedback showing whether the content is "too heavy" or "too lightweight". Please also ask at any time in case something is not clear.
 
-### [Setup of a development environment](./setup/overview.md)
+The workshop tries to balance new users with experienced users and is planned for a 3 hour session. The progress is flexible, but the following milestones are rough estimation:
+
+* **Minute 000 - 030** - Local setup
+* **Minute 030 - 090** - Chapter Kubernetes Basics
+* **Minute 090 - 150** - Chapter Explore
+* **Minute 150 - 180** - Chapter Homeserver
+
+### [Local setup](./setup/overview.md)
 
 A local development environment will be set up. This environment is to be used for local development for learning and exploring. But it may also be used to try out a few of the recommendations mentioned in the chapter "homeserver" in case no target server is available during the workshop.
 
@@ -16,7 +31,7 @@ Within this chapter a very short intro to Kubernetes will be given. The focus is
 
 ### [Explore](./explore/overview.md)
 
-This chapter will showcase a few projects that are easy to install, but would be very complex to be installed without Kubernetes superpowers.
+This chapter will showcase a few projects that are easy to install, but would be very complex to be installed without Kubernetes superpowers. Parts of the examples are especially useful for the home setup and will be used in the homeserver setup.
 
 ### [Homeserver](./homeserver/overview.md)
 
