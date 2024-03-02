@@ -69,6 +69,23 @@ Building containers is not required as part of this workshop. But you may want t
 
 To install Docker Engine follow these instructions: [https://docs.docker.com/engine/](https://docs.docker.com/engine/)
 
+## (optional) reset setup and advanced functions
+
+It might happen that you get stuck during trying out things. This might be caused by your setup simply being completely messed up. But not worries. A fresh cluster can be set up in a minute.
+
+```sh
+# delete the cluster and recreate a fresh one
+minikube delete && minikube start
+```
+
+But might as well get bored by the simple setup and are striving for more. In that case minikube offers a lot of extended features.
+
+* You may want to take a look at the minikube dashboard, simply execute `minikube dashboard`.
+* Change the default settings how much cpu and memory your cluster is assigned, [see docs](https://minikube.sigs.k8s.io/docs/commands/start/).
+* You may want to install one of the [offered addons](https://minikube.sigs.k8s.io/docs/handbook/addons/). List with `minukube addons list` and enable with `minikube addon enable youraddonname`. Some addons might need configuration.
+* You may want to try out a tutorial as offered on the [minikube website](https://minikube.sigs.k8s.io/docs/tutorials/).
+* You may want to start your cluster with an [alternative driver](https://minikube.sigs.k8s.io/docs/drivers/).
+
 ## Verify installation
 
 The following commands may be used to verify that everything is working as expected.

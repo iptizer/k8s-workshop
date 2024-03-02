@@ -2,6 +2,8 @@
 
 This chapter explains basics of Kubernetes. Every section has a theory chapter and establishes knowledge with a small challenge at the end.
 
+Please note that for aktually getting software running in the next chapter, these concepts are good to know, but are not necessarily required to be understood in full detail. So don't worry if not everything is understood in this chapter.
+
 Some parts have a chicken and egg problem. Meaning that they require knowledge from a previous chapter. In case something is unclear, please ask during the workshop.
 
 ## yaml
@@ -89,7 +91,7 @@ hello from the container
 
 ## Kubernetes API
 
-The most essential concept within Kubernetes is the idea of an API. This API accepts requests. For example "start a container". After that the API (or related software which is called [controller](https://kubernetes.io/docs/concepts/architecture/controller/#controller-pattern)) will make sure that this container is started and keeps running.
+The most essential concept within Kubernetes is the idea of a Kubernetes API. The Kubernetes API accepts requests. For example "start a container". After that the API (or related software which is called [controller](https://kubernetes.io/docs/concepts/architecture/controller/#controller-pattern)) will make sure that this container is started and keeps running.
 
 In other words: Define target situation via API. The rest taken care of by Kubernetes. This is referred to as "reconciliation loop".
 
@@ -116,9 +118,9 @@ Install the tool `curl`. Curl can be used to send http requests to endpoints.
 
 ## Container
 
-A container (Docker container) is a normal Linux process (from the perspective of a server). Meaning: On a server that runs a postgres database container, the database process can be seen.
+A container (Docker container) is a normal Linux process (from the perspective of a server). Meaning: On a server that runs a postgres database container, the database process can be seen and the host has access to everything. (When you are root.)
 
-The trick lies in the view of the process. The process is isolated from the server it runs on.
+The trick lies in the view of the process. The process is isolated from the server it runs on. Meaning from within the container, there is no access to the host node. (It can be configured, but usually access is prevented.)
 
 The benefit of a container comes from the fact, that it is shipped including all required libraries. It also decouples "application data" and "peresistent data". This solves a lot of issues, for example "dependendency problems" and "application update process".
 
@@ -168,7 +170,13 @@ spec:
 Start the webserver with the following command:
 
 ```sh
-kubectl create -f pod.yaml
+kubectl create -f pod.yaml -n easterhegg21
+```
+
+Try to edit your pod. This will fail and is not working.
+
+```sh
+kubectl edit pod -n easterhegg21 webserver
 ```
 
 Find out more about your running pod with the command `kubectl describe`.
@@ -177,7 +185,107 @@ Find out more about your running pod with the command `kubectl describe`.
 
 ## Deployment
 
+A deployment is a Kubernetes object that wraps a pod. A deployment can be modified. When a pod difinition is altered, Kubernetes will stop your old pod and will start a new one. This process can for example be used for updates of the software running. In addition to this update procedure, a deployment can also start multiple pods with the same parameters.
+
+```mermaid
+flowchart LR    
+    subgraph dep [Deployment]
+        pod1[Pod 1]
+        pod2[Pod 2]
+        pod3[Pod 3]
+    end
+```
+
+Copy and paster the following lines into a file called `deployment.yaml`.
+
+```yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: webserver-deployment
+spec:
+  replicas: 1  # Specifies the number of replicas (pod instances) you want
+  selector:
+    matchLabels:
+      app: webserver  # This should match the labels of your pod template
+  template:
+    metadata:
+      labels:
+        app: webserver  # Label your pod template to match the selector
+    spec:
+      containers:
+      - name: nginx
+        image: nginx
+```
+
+To apply, execute a `kubectl apply -f deployment.yaml -n easterhegg21`.
+
+Observe the names of the pods with a `kubectl get pods -n easterhegg21`.
+
+### challenge deployment
+
+Observe the `kubectl scale -h` command and change your webserver deployment to 3. Before scaling open a new shell and use the command `kubctl get pods -n easterhegg21 -w` to check what is happening.
+
+[solution]: <>  See here how to scale [https://kubernetes.io/docs/concepts/workloads/controllers/deployment/#scaling-a-deployment](https://kubernetes.io/docs/concepts/workloads/controllers/deployment/#scaling-a-deployment)
+
+Change the deployment so, that every pod of your webserver requests 10 milli CPUs (`10m`). See [this example](https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/#example-1) for a pod. Note that a deployment wraps a pod definition under "teamplate".
+
 ## Service
+
+With a pod and a deployment we now have a webserver running. But the webserver is not reachable from the outside, nor is it reachable from within the cluster. To make services available, another Kubernetes object is introduces. With a service object the database connection or the webserver address can be made available within the cluster.
+
+A service object assigns a special address (IP) within the cluster. This address is not changing, and therefore independant from the workload it is pointing to.
+
+```mermaid
+flowchart LR   
+    subgraph svc [Service]
+    end
+    
+    subgraph dep [Deployment]
+        pod1[Pod 1]
+        pod2[Pod 2]
+        pod3[Pod 3]
+    end
+
+    svc --> pod1
+    svc -.-> pod2
+    svc -.-> pod3
+```
+
+Copy the following yaml into a file called `deployment_service.yaml` and apply with `kubectl apply -f deployment_service.yaml -n easterhegg21`.
+
+```yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: webserver-deployment
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: webserver
+  template:
+    metadata:
+      labels:
+        app: webserver
+    spec:
+      containers:
+      - name: nginx
+        image: nginx
+        ports:
+        - containerPort: 80  # Specifies the port the container exposes
+apiVersion: v1
+kind: Service
+metadata:
+  name: webserver-service
+spec:
+  selector:
+    app: webserver  # Matches the label of the Deployment's Pods
+  ports:
+    - protocol: TCP
+      port: 80  # The port the service is exposed on.
+      targetPort: 80  # The target port on the Pod containers.
+```
 
 ## nip.io
 
@@ -225,3 +333,7 @@ flowchart LR
     svc -.-> pod2
     svc -.-> pod3
 ```
+
+## More basic concepts
+
+Kubernetes has a few more basic concepts. The complete understanding is 
