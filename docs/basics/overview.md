@@ -181,7 +181,9 @@ kubectl edit pod -n easterhegg21 webserver
 
 Find out more about your running pod with the command `kubectl describe`.
 
-[solution]: <> `kubectl describe pod -n easterhegg21 webserver`
+Execute a shell on your webserver container. The command is called `kubectl exec`. Use `-h` with the command to find out more.
+
+[solution]: <> `kubectl describe pod -n easterhegg21 webserver` && `kubectl exec webserver -n easterhegg21 -it -- /bin/bash`.
 
 ## Deployment
 
@@ -222,7 +224,7 @@ To apply, execute a `kubectl apply -f deployment.yaml -n easterhegg21`.
 
 Observe the names of the pods with a `kubectl get pods -n easterhegg21`.
 
-### challenge deployment
+### challenge - deployment
 
 Observe the `kubectl scale -h` command and change your webserver deployment to 3. Before scaling open a new shell and use the command `kubctl get pods -n easterhegg21 -w` to check what is happening.
 
@@ -260,7 +262,7 @@ kind: Deployment
 metadata:
   name: webserver-deployment
 spec:
-  replicas: 3
+  replicas: 1
   selector:
     matchLabels:
       app: webserver
@@ -274,6 +276,7 @@ spec:
         image: nginx
         ports:
         - containerPort: 80  # Specifies the port the container exposes
+---
 apiVersion: v1
 kind: Service
 metadata:
@@ -286,6 +289,30 @@ spec:
       port: 80  # The port the service is exposed on.
       targetPort: 80  # The target port on the Pod containers.
 ```
+
+It is possible to use `kubectl` to directly forward a local port to the pod or the service port. Connect to a pod directly using the following command:
+
+```sh
+# find the pod name
+❯ k get po -n easterhegg21
+NAME                                    READY   STATUS    RESTARTS   AGE
+webserver-deployment-5d5c5c44c7-x9x9d   1/1     Running   0          69m
+# forward remote port 80 to local port 8080
+❯ k port-forward -n easterhegg21 po/webserver-deployment-5d5c5c44c7-x9x9d 8080:80
+Forwarding from 127.0.0.1:8080 -> 80
+Forwarding from [::1]:8080 -> 80
+Handling connection for 8080
+```
+
+While being connected restart your deployment with the following command: `kubectl rollout restart deployment -n easterhegg21 webserver-deployment`. Watch what happens with `kubectl get po -n easterhegg21 -w`, while still having the port forward active.
+
+Check the difference with connecting directly to the service with the `kubectl port-forward` command.
+
+### challenge - service
+
+There are actually multiple different kind of services. Check [the docs](https://kubernetes.io/docs/concepts/services-networking/service/#publishing-services-service-types) for the differences and convert your service to type `NodePort`.
+
+[solution]: <>  kubectl patch svc webserver-service -p '{"spec":{"type":"NodePort"}}' -n easterhegg21
 
 ## nip.io
 
@@ -303,12 +330,17 @@ nslookup easterhegg21-127-0-0-1.nip.io
 dig easterhegg21-127-0-0-1.nip.io @8.8.8.8
 ```
 
-### [BONUS CHALLENGE] hex notation
+### challenge - hex notation
 
-nip.io has another way to write the hostname. Construct the hostname in hex notation.
+[nip.io](https://nip.io) has another way to write the hostname. Construct the hostname in hex notation.
+
+[solution]: <>  7f000001.nip.io
 
 ## Ingress
 
+Within our cluster there is now a webserver running and we can access it from the inside of the cluster. To expose a web service outside the cluster, another Kubernetes object in intruduced: Ingress
+
+Ingress is a so called reverse proxy that can handle more advanced use-cases related to web traffic handling. This includes for example the handling of certificates (TLS termination).
 
 ```mermaid
 flowchart LR
