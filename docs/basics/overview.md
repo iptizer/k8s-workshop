@@ -366,6 +366,71 @@ flowchart LR
     svc -.-> pod3
 ```
 
+So expose the deployment and the service from above to outside the cluster, use the following lines and paste them into a file called `deployment_service_ingress.yaml`. Ingress addon is reuqired here. See setup chapter.
+
+```yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: webserver-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: webserver
+  template:
+    metadata:
+      labels:
+        app: webserver
+    spec:
+      containers:
+      - name: nginx
+        image: nginx
+        ports:
+        - containerPort: 80  # Specifies the port the container exposes
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: webserver-service
+spec:
+  selector:
+    app: webserver  # Matches the label of the Deployment's Pods
+  ports:
+    - protocol: TCP
+      port: 80  # The port the service is exposed on.
+      targetPort: 80  # The target port on the Pod containers.
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: webserver-ingress
+spec:
+  rules:
+  - host: webserver-127-0-0-1.nip.io
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: webserver-service
+            port:
+              number: 80
+```
+
+Use the command `minikube tunnel` to start a tunnel to the Kubernetes cluster. This requires root rights and will host the ingress on port 80 and 443. After that you may head over to the browser and surv to your hosted nginx: [https://webserver-127-0-0-1.nip.io](webserver-127-0-0-1.nip.io).
+
+### challenge - nginx
+
+Use the `kubectl exec` command to get a shell on your pod and modify the "Welcome to nginx!" headline to "Welcome to Easterhegg21!". On the pod the html file lies in `/usr/share/nginx/html`. As no editor is installed the tool sed may be used with the command: `sed -i "s/Welcome to nginx/Welcome to Easterhegg21/" /usr/share/nginx/html/index.html`.
+
+Refresh the web page to validate your modification. Use the `kubectl restart rollout` command from above and relead the page again.
+
+[solution]: <>  find the pod name `kubectl get pods -n easterhegg21`. Exec to the pod `kubectl exec`.
+
 ## More basic concepts
 
-Kubernetes has a few more basic concepts. The complete understanding is 
+This chapter focused on the essentials of Kubernetes. There are a couple of other basic concepts that are not so relevant for now. Check the list below to learn more in case you have time.
+
+* A deployment coup

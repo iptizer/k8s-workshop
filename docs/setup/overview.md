@@ -50,6 +50,17 @@ Setting up the cluster may look as follows:
 🏄  Done! kubectl is now configured to use "minikube" cluster and "default" namespace by default
 ```
 
+Minikube also had addons which make additional functionalities easily available. Those are not required in the beginning, but at least ingress is required later on. You could skip it for now.
+
+```sh
+# ingress is required later on
+minikube addons enable ingress
+# metrics server gathers resource usage and is nice to have
+minikube addons enable metrics-server
+# registry can be used to push images (we'll see what this means later)
+minikube addons enable registry
+```
+
 ## Client tools
 
 When a cluster is running we could already send commands to the cluster. To do so, various client tools are required. At least kubectl and helm. K9s and kubens make it easier and helm with switching between clusters.
