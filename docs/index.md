@@ -14,6 +14,8 @@ To walk through this workshop the following knowledge and local setup is recomme
 
 The workshop start easy with the setup of a local environment and explaining basics from the ground up. Experienced users may already proceed to the "explore" chapter or work on the challenge sections. Please give feedback showing whether the content is "too heavy" or "too lightweight". Please also ask at any time in case something is not clear.
 
+The local setup will be used to demonstrate basic concepts. The local setup will then be used to show tools that are required or helpful in a home server setup. The last chapter shows how to deploy Kubernetes on a home or remote server. In case you have a remote server available, nice you can try it. If not, the concept is shown enabling you to verify whether a Kubernetes home setup is suitable for your needs.
+
 The workshop tries to balance new users with experienced users and is planned for a 3 hour session. The progress is flexible, but the following milestones are rough estimation:
 
 * **Minute 000 - 030** - Local setup
