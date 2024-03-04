@@ -419,7 +419,7 @@ spec:
               number: 80
 ```
 
-Use the command `minikube tunnel` to start a tunnel to the Kubernetes cluster. This requires root rights and will host the ingress on port 80 and 443. After that you may head over to the browser and surv to your hosted nginx: [https://webserver-127-0-0-1.nip.io](webserver-127-0-0-1.nip.io).
+Use the command `minikube tunnel` to start a tunnel to the Kubernetes cluster. This requires root rights and will host the ingress on port 80 and 443. After that you may head over to the browser and surv to your hosted nginx: [https://webserver-127-0-0-1.nip.io](https://webserver-127-0-0-1.nip.io).
 
 ### challenge - nginx
 
@@ -433,4 +433,6 @@ Refresh the web page to validate your modification. Use the `kubectl restart rol
 
 This chapter focused on the essentials of Kubernetes. There are a couple of other basic concepts that are not so relevant for now. Check the list below to learn more in case you have time.
 
-* A deployment coup
+* A deployment abstracts pods. There are two other common objects for other use cases. [DaemonSets](https://kubernetes.io/docs/concepts/workloads/controllers/daemonset/) and [StatefulSets](https://kubernetes.io/docs/concepts/workloads/controllers/statefulset/).
+* Kubernetes has the abiltiy to decouple configuration from workloads. [ConfigMaps](https://kubernetes.io/docs/concepts/configuration/configmap/) and [Secrets](https://kubernetes.io/docs/concepts/configuration/secret/) are used for this.
+* For now only statelass applications are covered. To imlement persistancy volumes can be used. One concept here is called [Persistant Volume Claim (PVC)](https://kubernetes.io/docs/concepts/storage/persistent-volumes/#reserving-a-persistentvolume).
