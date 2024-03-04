@@ -62,6 +62,17 @@ nav:
     - Overview: basics/overview.md
   - Explore:
     - Overview: explore/overview.md
+    - OpenEBS: explore/openebs.md
+    - Wordpress: explore/wordpress.md
+    - Cert-manager: explore/cert-manager.md
+    - Velero: explore/velero.md
+    - MinIO: explore/minio.md
+    - Monitoring: explore/prometheus.md
+    - Gitea: explore/gitea.md
+    - Nextcloud: explore/nextcloud.md
+    - MailU: explore/mailu.md
+    - Databases: explore/databases.md
+    - Appsmith: explore/appsmith.md
   - Homeserver Setup:
     - Overview: homeserver/overview.md
 
