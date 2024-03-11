@@ -7,7 +7,7 @@ Due to maturing of the Kubernetes eco system, there is now software available th
 !!!Note "Development environment with self signed certificates."
     The procedure to get a certificate with Let's Encrypt does not work on our local system. But it is still possible to work with self-signed certificcates which works the same way as for "official certificates". This tutorial will explain and provide all information to actually deploy on a remote server.
 
-## cert-manager setup
+## Setup
 
 Copy the following yaml into a local file and call it `helm_cert-manager.yaml`.
 
@@ -87,6 +87,8 @@ kubectl apply -f cert-manager_issuer.yaml
 # check for issuers - acme encrypters may fail, not a problem for this tutorial
 kubectl get clusterissuer
 ```
+
+## Experiment
 
 With cert-manager installed it is now possible to create a certificate with applying a yaml file. But this is not even required.
 
