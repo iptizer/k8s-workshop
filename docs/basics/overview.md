@@ -63,6 +63,9 @@ Please check the setup chapter for instructions to install the Docker Engine bef
 
 To build a container you may copy and paste the following code into a file and give it the name `Dockerfile`.
 
+!!!Note "Files also in repository"
+    Note that you can find all used files in the git repository here: [https://github.com/iptizer/k8s-workshop/tree/main/docs](https://github.com/iptizer/k8s-workshop/tree/main/docs)
+
 ```Dockerfile
 # Use BusyBox as the base image
 FROM busybox
@@ -82,7 +85,7 @@ To build and run the container execute the following commands from the same fold
 ```sh
 # you may call your docker image myecho or give it some other name
 ❯ docker build -t myecho .
-[+] Building 3.2s (8/8) 
+[+] Building 3.2s (8/8)
 [...]
 # run the container with "interactive tty & remove after finish" (-it --rm)
 ❯ docker run -it -rm myecho
@@ -190,7 +193,7 @@ Execute a shell on your webserver container. The command is called `kubectl exec
 A deployment is a Kubernetes object that wraps a pod. A deployment can be modified. When a pod difinition is altered, Kubernetes will stop your old pod and will start a new one. This process can for example be used for updates of the software running. In addition to this update procedure, a deployment can also start multiple pods with the same parameters.
 
 ```mermaid
-flowchart LR    
+flowchart LR
     subgraph dep [Deployment]
         pod1[Pod 1]
         pod2[Pod 2]
@@ -239,10 +242,10 @@ With a pod and a deployment we now have a webserver running. But the webserver i
 A service object assigns a special address (IP) within the cluster. This address is not changing, and therefore independant from the workload it is pointing to.
 
 ```mermaid
-flowchart LR   
+flowchart LR
     subgraph svc [Service]
     end
-    
+
     subgraph dep [Deployment]
         pod1[Pod 1]
         pod2[Pod 2]
@@ -349,16 +352,16 @@ flowchart LR
 
     subgraph ing [Ingress]
     end
-    
+
     subgraph svc [Service]
     end
-    
+
     subgraph dep [Deployment]
         pod1[Pod 1]
         pod2[Pod 2]
         pod3[Pod 3]
     end
-    
+
     usr-->ing
     ing --> svc
     svc --> pod1

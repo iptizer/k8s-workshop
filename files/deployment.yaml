@@ -1,0 +1,17 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: webserver-deployment
+spec:
+  replicas: 1  # Specifies the number of replicas (pod instances) you want
+  selector:
+    matchLabels:
+      app: webserver  # This should match the labels of your pod template
+  template:
+    metadata:
+      labels:
+        app: webserver  # Label your pod template to match the selector
+    spec:
+      containers:
+      - name: nginx
+        image: nginx
