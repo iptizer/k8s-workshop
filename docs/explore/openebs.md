@@ -3,7 +3,7 @@
 As of now only stateless applications have been deloyed. To store data, like for databases, a "hard disc" is required. To do so, OpenEBS is used can be used for remote servers. Intructions available below.
 
 !!!Note "Not for local minikube"
-  The setup instructions are not required in the minikube setup. For the minikube setup volumes are already made available. You can make sure with the following command `minikube addons enable storage-provisioner`. Continue to the "experiment" section below right away.
+    The setup instructions are not required in the minikube setup. For the minikube setup volumes are already made available. You can make sure with the following command `minikube addons enable storage-provisioner`. Continue to the "experiment" section below right away.
 
 ## Setup
 

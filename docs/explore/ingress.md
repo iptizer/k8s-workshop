@@ -3,7 +3,7 @@
 Ingress is the solution that Kubernetes uses to route traffic "into" the cluster. It enables the functionality to make multiple web services available under one external IP address. There are various solutions available to satisfy the ingress functionality, which is basically a http reverse proxy. Most widely used is "ingress-nginx".
 
 !!!Note "Not for local minikube"
-  The setup instructions are not required in the minikube setup. For the minikube setup volumes are already made available. You can make sure with the following command `minikube addons enable ingress`. There is no experiment section in this chapter, as this was already performed in the basic section.
+    The setup instructions are not required in the minikube setup. For the minikube setup volumes are already made available. You can make sure with the following command `minikube addons enable ingress`. There is no experiment section in this chapter, as this was already performed in the basic section.
 
 ## Setup
 
