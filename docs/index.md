@@ -23,11 +23,11 @@ The workshop tries to balance new users with experienced users and is planned fo
 * **Minute 090 - 150** - Chapter Explore
 * **Minute 150 - 180** - Chapter Homeserver
 
-### [Local setup](./setup/overview.md)
+### [Local setup](./setup.md)
 
 A local development environment will be set up. This environment is to be used for local development for learning and exploring. But it may also be used to try out a few of the recommendations mentioned in the chapter "homeserver" in case no target server is available during the workshop.
 
-### [Kubernetes Basics](./basics/overview.md)
+### [Kubernetes Basics](./basics.md)
 
 Within this chapter a very short intro to Kubernetes will be given. The focus is on topics that are really necessary to know, leaving the details for later. Bridging the gap for users that are used to work with Linux, but not with Kubernetes.
 
