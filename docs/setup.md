@@ -97,6 +97,14 @@ But might as well get bored by the simple setup and are striving for more. In th
 * You may want to try out a tutorial as offered on the [minikube website](https://minikube.sigs.k8s.io/docs/tutorials/).
 * You may want to start your cluster with an [alternative driver](https://minikube.sigs.k8s.io/docs/drivers/).
 
+## (optional) Dashboard
+
+As part of minikube a Kubernetes dashboard can be accessed. The main purpose is to visualize current workloads. The dashboard can be installed and accessed with the following command. After the dashboard is up and running, the browser will be opened automatically.
+
+```sh
+minikube dashboard
+```
+
 ## Verify installation
 
 The following commands may be used to verify that everything is working as expected.

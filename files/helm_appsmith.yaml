@@ -1,0 +1,12 @@
+ingress:
+  enabled: true
+  annotations:
+    cert-manager.io/cluster-issuer: "selfsigned-issuer"
+  hosts:
+  - host: appsmith-127-0-0-1.nip.io
+  tls: true
+  certManager: true
+  certManagerTls:
+    - hosts:
+        - appsmith-127-0-0-1.nip.io
+      secretName: appsmith-127-0-0-1-nip-io
