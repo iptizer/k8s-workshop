@@ -63,6 +63,7 @@ nav:
   - Explore:
     - Overview: explore/overview.md
     - OpenEBS: explore/openebs.md
+    - Ingress: explore/ingress.md
     - Wordpress: explore/wordpress.md
     - Cert-manager: explore/cert-manager.md
     - Velero: explore/velero.md
