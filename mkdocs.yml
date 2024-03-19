@@ -56,10 +56,8 @@ repo_name: "k8s-workshop"
 repo_url: "https://github.com/iptizer/k8s-workshop"
 nav:
   - Home: index.md
-  - Development Setup:
-    - Overview: setup/overview.md
-  - Kubernetes Basics:
-    - Overview: basics/overview.md
+  - Development Setup: setup.md
+  - Kubernetes Basics: basics.md
   - Explore:
     - Overview: explore/overview.md
     - OpenEBS: explore/openebs.md
