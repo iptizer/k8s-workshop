@@ -6,20 +6,27 @@ The idea is, that all apps can be tried out in the local setup. But also be used
 
 All used files can be found in the directory [`/files` within this repository](https://github.com/iptizer/k8s-workshop/tree/main/files).
 
+Usually required basic infrastructure:
+
 * `OpenEBS` to provide Kubernetes volumes.
 * `ingress-nginx` to provide ingress functionality.
 * `Cert-manager` for certificates.
-* `Gitea` as a git server.
 
+Example applications:
+
+* `Gitea` as a git server.
 * `Wordpress` as a common example.
-* `Velero` as a backup tool.
-* `Minio` as a storage solution.
-* `Prometheus-stack` as a feature rich monitoring solution.
 * `Nextcloud` as a feature rich collaboration solution.
+
 * `MailU` as a mail environment.
 * Phpmyadmin and postgresql databases as a common example.
 * `Appsmith` as a fancy try-out example.
 * `nocodb` as another fancy example.
+
+Usefull extensions for day2 operations:
+
+* `Prometheus-stack` as a feature rich monitoring solution.
+* `Velero and Minio and rclone` as a backup tool.
 
 ## helm
 

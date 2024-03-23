@@ -1,5 +1,7 @@
 # Nextcloud
 
+Nextcloud is a feature rich collaboration solution.
+
 ## Setup
 
 Copy the following text to a file called `helm_nextcloud.yaml`.
@@ -111,4 +113,10 @@ NAME                                 READY   AGE
 statefulset.apps/nextcloud-mariadb   1/1     6m8s
 ```
 
-## Setup - phpmyadmin
+## Tear down
+
+To remove nextcloud again, execute as follows:
+
+```sh
+helm uninstall -n nextcloud nextcloud
+```

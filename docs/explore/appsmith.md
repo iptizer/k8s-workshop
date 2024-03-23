@@ -24,7 +24,7 @@ Appsmith can be installed with the following command:
 ```sh
 helm repo add stable-appsmith http://helm.appsmith.com
 helm repo update
-helm upgrade --install appsmith stable-appsmith/appsmith \
+helm upgrade --install appsmith  \
   --namespace appsmith --create-namespace \
   -f helm_appsmith.yaml
 ```
