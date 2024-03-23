@@ -2,13 +2,15 @@
 
 Within the last chapter basic concepts have been demonstrated and a local development environment has been set up. This chapter will introduce new concepts, new software, and explorative examples that can be deployed easily in Kubernetes.
 
-The idea is, that all apps can be tried out in the local setup. But also be used as a starting point for a potential production setup as introduced in the last chapter. There are two exceptions, ingress and OpenEBS. Those are only explained for the remote server, as the functionality comes right out-of-the-box with minikube.
+The idea is, that all apps can be tried out in the local setup. But also be used as a starting point for a potential production setup as introduced in the last chapter. There are two exceptions, ingress and OpenEBS. Those are only explained for the remote server, as the functionality comes right out-of-the-box with minikube. MailU can be installed on the local setup, but not really used, as a mail setup required a real server with internet connectivity.
+
+All used files can be found in the directory [`/files` within this repository](https://github.com/iptizer/k8s-workshop/tree/main/files).
 
 * `OpenEBS` to provide Kubernetes volumes.
 * `ingress-nginx` to provide ingress functionality.
 * `Cert-manager` for certificates.
-
 * `Gitea` as a git server.
+
 * `Wordpress` as a common example.
 * `Velero` as a backup tool.
 * `Minio` as a storage solution.
@@ -17,6 +19,7 @@ The idea is, that all apps can be tried out in the local setup. But also be used
 * `MailU` as a mail environment.
 * Phpmyadmin and postgresql databases as a common example.
 * `Appsmith` as a fancy try-out example.
+* `nocodb` as another fancy example.
 
 ## helm
 

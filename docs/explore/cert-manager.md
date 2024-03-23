@@ -2,7 +2,7 @@
 
 Certificates are crucial for deploying home or remote servers. With a certificate users can savely browse your website + you can be sure that your server is your server and not some malicious attacker in between. In ancient times this was either a very expensive or very complicatd procedure. Maybe even both.
 
-Due to maturing of the Kubernetes eco system, there is now software available that makes generating certificates easy and comfortable. Together with [Let's Encrypt](https://letsencrypt.org/about/) the tool [cert-manager](https://cert-manager.io/docs/) can be used. Cert-manager is a generic certificate handling software for Kubernetes. One of its key feartures is generating [Let's Encrypt](https://letsencrypt.org/about/) certificates for your domains.
+Due to maturing of the Kubernetes eco system, there is now software available that makes generating certificates easy and comfortable. Together with [Let's Encrypt](https://letsencrypt.org/about/) the tool [cert-manager](https://cert-manager.io/docs/) can be used. Cert-manager is a generic certificate handling software for Kubernetes. One of its key features is generating [Let's Encrypt](https://letsencrypt.org/about/) certificates for your domains.
 
 !!!Note "Development environment with self signed certificates."
     The procedure to get a certificate with Let's Encrypt does not work on our local system. But it is still possible to work with self-signed certificcates which works the same way as for "official certificates". This tutorial will explain and provide all information to actually deploy on a remote server.

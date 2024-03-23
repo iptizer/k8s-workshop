@@ -1,6 +1,10 @@
 # Gitea
 
-Gitea is an open source git server. It can easily be installed using helm. Copy the following text into a file called `helm_gitea.yaml`.
+Gitea is an open source git server.
+
+## Setup
+
+It can easily be installed using helm. Copy the following text into a file called `helm_gitea.yaml`.
 
 ```yaml
 ingress:
@@ -35,10 +39,11 @@ Execute the following command to install gitea.
 
 ```sh
 helm repo add gitea-charts https://dl.gitea.com/charts/
+helm repo update
 helm install --create-namespace -n gitea -f helm_gitea.yaml gitea gitea-charts/gitea
 ```
 
-Follow the setup with the command `kubectl get pods -n gitea -w`. When all pods are in running mode, access to gitea is possible via [gitea-127-0-0-1.nip.io](https://gitea-127-0-0-1.nip.io). Use the credentials you did set in the values file above.
+Follow the setup with the command `kubectl get pods -n gitea -w`. When all pods are in running mode, access to gitea is possible via [gitea-127-0-0-1.nip.io](https://gitea-127-0-0-1.nip.io). This requires `minikube tunnel` to be active. Use the credentials you did set in the values file above.
 
 Using the git server with ssh (port 22) is a bit more complex and will not be covered in this tutorial. Use http connection for try outs.
 
