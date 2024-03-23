@@ -1,12 +1,3 @@
-# Prometheus monitoring
-
-Monitoring can be quite a complex task, as it not only requires tools and connecting them. It also requires dashboards and senseful alert thresholds. This is very time consuming and requires a lot of experience.
-
-For this the Kubernetes ecosystem has everything ready to go packages in the form of the "prometheus-stack" helm chart.
-
-Copy the following text into a file called `helm_prometheus-stack.yaml`.
-
-```yaml
 prometheus:
   ingress:
     enabled: true
@@ -44,7 +35,7 @@ grafana:
   ingress:
     enabled: true
     hosts:
-    - grafana-127-0-0-1.nip.de
+    - grafana-127-0-0-1.nip.io
     tls:
     - hosts:
       - "grafana-127-0-0-1.nip.io"
@@ -55,15 +46,3 @@ grafana:
       cert-manager.io/cluster-issuer: "selfsigned-issuer"
   env:
     GF_DATE_FORMATS_INTERVAL_DAY: "MMM YYYY"
-```
-
-Apply the chart with the following command:
-
-```sh
-helm repo add prometheus-community https://prometheus-community.github.io/helm-charts
-helm repo update
-helm upgrade --install --namespace monitoring --create-namespace \
-prometheus-operator prometheus-community/kube-prometheus-stack \
--f helm_prometheus-stack.yaml
-
-```
