@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: stress-ng
+  labels:
+    app: stress-ng
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: stress-ng
+  template:
+    metadata:
+      labels:
+        app: stress-ng
+    spec:
+      containers:
+      - name: stress-ng
+        image: alexeiled/stress-ng:latest-ubuntu
+        imagePullPolicy: Always
+        command: ["stress-ng"]
+        args:
+        - "--cpu"
+        - "1"
