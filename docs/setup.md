@@ -6,7 +6,7 @@ A few tools will be mentioned. The possibilities are endless. In case you are al
 
 During the installation a few questions may come up. Write them down to ask them later. They should be answered in the "basics" section. The workshop will start with the development setup, so that you can already do some hands on in the basics chapter.
 
-It is recommended to go with Linux or MacOs, but Windows should also be fine (with WSL2). Though, Windows is not tested thoroughly.
+It is recommended to go with Linux or MacOs, but Windows should also be fine. Though, Windows is not tested thoroughly.
 
 ## The cluster
 
@@ -20,6 +20,29 @@ Alternatives would be:
 
 * [kind](https://kind.sigs.k8s.io/)
 * [Rancher Desktop](https://rancherdesktop.io/)
+* [Docker Desktop](https://docs.docker.com/desktop/)
+
+### Setting up the runtime
+
+The runtime is what minikube uses to spin up the Kubernetes cluster. Options vary from operating system to operating system. Note that some recommended options have a built in Kubernetes functionality which will not be used as part of this tutorial.
+
+#### Windows
+
+The easiest way with Windows is to install [Docker Desktop](https://docs.docker.com/desktop/) and then use the "docker" driver of minikube. Alternatives are [Rancher Desktop](https://rancherdesktop.io/) also with the "docker" driver, or installing [Virtualbox](https://www.virtualbox.org/) using the "virtualbox" driver.
+
+Note that using Docker Desktop for professional use [requires licencing](https://www.docker.com/pricing/).
+
+#### Linux
+
+Linux has a wider variety of options. The easiest is still with installing either [Docker Desktop](https://docs.docker.com/desktop/) or the [Docker Engine](https://docs.docker.com/engine/install/) which does not have any licencing requirements, even for professional use. Alternatives are [Rancher Desktop](https://rancherdesktop.io/) also with the "docker" driver, or installing [Virtualbox](https://www.virtualbox.org/) using the "virtualbox" driver.
+
+Another option would be the installation of [podman](https://podman.io/docs/installation) with using the respective driver.
+
+#### MacOS
+
+MacOS basically comes with the same options as Linux. The easiest is still with installing either [Docker Desktop](https://docs.docker.com/desktop/) or the [Docker Engine](https://docs.docker.com/engine/install/) which does not have any licencing requirements, even for professional use. Alternatives are [Rancher Desktop](https://rancherdesktop.io/) also with the "docker" driver, or installing [Virtualbox](https://www.virtualbox.org/) using the "virtualbox" driver.
+
+Another alternative for `x86_64` Macs is the use of [`hyperkit`](https://formulae.brew.sh/formula/hyperkit).
 
 ### Setting up the cluster
 
@@ -50,7 +73,9 @@ Setting up the cluster may look as follows:
 🏄  Done! kubectl is now configured to use "minikube" cluster and "default" namespace by default
 ```
 
-Minikube also had addons which make additional functionalities easily available. Those are not required in the beginning, but at least ingress is required later on. You could skip it for now.
+Minikube start will autoselect the best driver, but also accepts the option `--driver=''` to manually select the driver as discusseds in the previous section.
+
+Minikube also had addons which make additional functionalities easily available. The annons can be installed directly with `minikube start` with adding the addons as an option in a comma separated list like `--addons='ingress,metrics-server'`. Or after the cluster start as follows.
 
 ```sh
 # ingress is required later on
@@ -61,12 +86,19 @@ minikube addons enable metrics-server
 minikube addons enable registry
 ```
 
+A huger `minikube start` command may look as follows. Note that CPU and MEMORY may already be limitted by your Docker runtime:
+
+```sh
+minikube start --driver='docker' --addons='dashboard,ingress,metrics-server,registry' --memory='14g' --cpus='4'
+```
+
 ## Client tools
 
 When a cluster is running we could already send commands to the cluster. To do so, various client tools are required. At least kubectl and helm. K9s and kubens make it easier and helm with switching between clusters.
 
 * kubectl (equivalent to the docker cli)
     * Visit [this page](https://kubernetes.io/docs/tasks/tools/#kubectl) to install kubectl locally.
+    * Alternatively you can use `minikube kubectl` and use a alias for this on the CLI.
 * helm (install "packages" on Kubernetes)
     * Visit [this page](https://helm.sh/docs/intro/install/#from-script) to install helm locally.
     * For those who have trust: `curl https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3 | bash`
@@ -97,19 +129,13 @@ But might as well get bored by the simple setup and are striving for more. In th
 * You may want to try out a tutorial as offered on the [minikube website](https://minikube.sigs.k8s.io/docs/tutorials/).
 * You may want to start your cluster with an [alternative driver](https://minikube.sigs.k8s.io/docs/drivers/).
 
-## (optional) Dashboard
-
-As part of minikube a Kubernetes dashboard can be accessed. The main purpose is to visualize current workloads. The dashboard can be installed and accessed with the following command. After the dashboard is up and running, the browser will be opened automatically.
-
-```sh
-minikube dashboard
-```
-
 ## Verify installation
 
 The following commands may be used to verify that everything is working as expected.
 
 ```sh
+# verify minikube
+minikube status
 # Verify tools are installed with help commands
 kuebctl -h
 helm -h
