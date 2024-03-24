@@ -144,3 +144,47 @@ To see some io load stress, edit the deployment to produce io load instead of cp
 ### Alertmanager
 
 Where Grafana is mainly used for visualizing metrics, Prometheus for collecting metrics, Alertmanager is used to send alerts to various receivers.
+
+```yaml
+---
+apiVersion: v1
+data:
+  telegramtoken: xxxxxxtelegramxxxxtokenxxxx
+kind: Secret
+metadata:
+  name: telegramtoken
+type: Opaque
+---
+apiVersion: monitoring.coreos.com/v1alpha1
+kind: AlertmanagerConfig
+metadata:
+  name: alertmanager-config
+  labels:
+    alertmanagerConfig: thisnamehastomatch
+spec:
+  route:
+    groupBy: ['job','alertname']
+    groupWait: 30s
+    groupInterval: 5m
+    repeatInterval: 12h
+    receiver: 'telegram'
+    routes:
+      - groupBy: ['job','alertname']
+        groupWait: 30s
+        groupInterval: 5m
+        repeatInterval: 12h
+        receiver: 'blackhole'
+        matchers:
+        - name: alertname
+          value: InfoInhibitor
+  receivers:
+  - name: telegram
+    telegramConfigs:
+    - botToken:
+        name: telegramtoken
+        key: telegramtoken
+      chatID: -12345678
+      apiURL: "https://api.telegram.org"
+      parseMode: "HTML"
+  - name: blackhole
+```
