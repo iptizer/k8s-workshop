@@ -47,7 +47,7 @@ Install the tool called [yq](https://github.com/mikefarah/yq). It is similar to 
 2. Execute the following command on the shell: `yq . pod.yaml`.
 3. Alter the command to extract the "image" value (`nginx:1.14.2`).
 
-[solution]: <> `yq '.["spec"]["containers"][0]["image"]' pod.yaml`
+<!-- `yq '.["spec"]["containers"][0]["image"]' pod.yaml` -->
 
 ## (Docker) container
 
@@ -117,7 +117,7 @@ Install the tool `curl`. Curl can be used to send http requests to endpoints.
 * Check [the docs](https://kubernetes.io/docs/concepts/overview/kubernetes-api/) and alter this command to only show all pods of the namespace `kube-system`. (We will clarify what a namespace is later.)
     * Hint: There is no further parameter required. The information lies on a different route.
 
-[solution]: <> `curl http://localhost:8001/api/v1/namespaces/kube-system/pods`
+<!-- `curl http://localhost:8001/api/v1/namespaces/kube-system/pods` -->
 
 ## Container
 
@@ -134,7 +134,7 @@ The benefit of a container comes from the fact, that it is shipped including all
 3. Use `docker ps` to list all containers running.
 4. Note the difference? Find out the reason.
 
-[solution]: <> A pause container is started by Kubernetes to hold as a placeholder container which holds for example the network namespace.
+<!-- A pause container is started by Kubernetes to hold as a placeholder container which holds for example the network namespace. -->
 
 ## namespace
 
@@ -145,7 +145,7 @@ Kubernetes has the concept of namespaces. Namespaces are used to separate worklo
 1. Use the command `kubectl get namespace` to list all namespaces.
 2. Observ the output of `kubectl -h` and create your namespace with the name `easterhegg21`.
 
-[solution]: <> `kubectl create namespace easterhegg21`
+<!-- `kubectl create namespace easterhegg21` -->
 
 ## Pod
 
@@ -186,7 +186,7 @@ Find out more about your running pod with the command `kubectl describe`.
 
 Execute a shell on your webserver container. The command is called `kubectl exec`. Use `-h` with the command to find out more.
 
-[solution]: <> `kubectl describe pod -n easterhegg21 webserver` && `kubectl exec webserver -n easterhegg21 -it -- /bin/bash`.
+<!-- `kubectl describe pod -n easterhegg21 webserver` && `kubectl exec webserver -n easterhegg21 -it -- /bin/bash`. -->
 
 ## Deployment
 
@@ -231,7 +231,7 @@ Observe the names of the pods with a `kubectl get pods -n easterhegg21`.
 
 Observe the `kubectl scale -h` command and change your webserver deployment to 3. Before scaling open a new shell and use the command `kubctl get pods -n easterhegg21 -w` to check what is happening.
 
-[solution]: <>  See here how to scale [https://kubernetes.io/docs/concepts/workloads/controllers/deployment/#scaling-a-deployment](https://kubernetes.io/docs/concepts/workloads/controllers/deployment/#scaling-a-deployment)
+<!-- See here how to scale [https://kubernetes.io/docs/concepts/workloads/controllers/deployment/#scaling-a-deployment](https://kubernetes.io/docs/concepts/workloads/controllers/deployment/#scaling-a-deployment) -->
 
 Change the deployment so, that every pod of your webserver requests 10 milli CPUs (`10m`). See [this example](https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/#example-1) for a pod. Note that a deployment wraps a pod definition under "teamplate".
 
@@ -315,7 +315,7 @@ Check the difference with connecting directly to the service with the `kubectl p
 
 There are actually multiple different kind of services. Check [the docs](https://kubernetes.io/docs/concepts/services-networking/service/#publishing-services-service-types) for the differences and convert your service to type `NodePort`.
 
-[solution]: <>  kubectl patch svc webserver-service -p '{"spec":{"type":"NodePort"}}' -n easterhegg21
+<!-- kubectl patch svc webserver-service -p '{"spec":{"type":"NodePort"}}' -n easterhegg21 -->
 
 ## nip.io
 
@@ -337,7 +337,7 @@ dig easterhegg21-127-0-0-1.nip.io @8.8.8.8
 
 [nip.io](https://nip.io) has another way to write the hostname. Construct the hostname in hex notation.
 
-[solution]: <>  7f000001.nip.io
+<!--  7f000001.nip.io -->
 
 ## Ingress
 
@@ -430,7 +430,7 @@ Use the `kubectl exec` command to get a shell on your pod and modify the "Welcom
 
 Refresh the web page to validate your modification. Use the `kubectl restart rollout` command from above and relead the page again.
 
-[solution]: <>  find the pod name `kubectl get pods -n easterhegg21`. Exec to the pod `kubectl exec`.
+<!-- find the pod name `kubectl get pods -n easterhegg21`. Exec to the pod `kubectl exec`. -->
 
 ## More basic concepts
 
