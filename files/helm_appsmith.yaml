@@ -10,3 +10,8 @@ ingress:
     - hosts:
         - appsmith-127-0-0-1.nip.io
       secretName: appsmith-127-0-0-1-nip-io
+redis:
+  enabled: false
+
+mongodb:
+  enabled: false

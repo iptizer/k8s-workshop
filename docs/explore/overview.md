@@ -22,15 +22,15 @@ Example applications:
 * `Wordpress` as a common example.
 * `Nextcloud` as a feature rich collaboration solution.
 
-* `MailU` as a mail environment.
-* Phpmyadmin and postgresql databases as a common example.
-* `Appsmith` as a fancy try-out example.
-* `nocodb` as another fancy example.
+* `MailU` as a mail environment. (not working in local setup)
+* `Appsmith` as a fancy try-out example. (not working in local setup)
+* `nocodb` as another fancy example. (not working in local setup)
 
 Usefull extensions for day2 operations:
 
 * `Prometheus-stack` as a feature rich monitoring solution.
-* `Velero and Minio and rclone` as a backup tool.
+* `ArgoCD` for GitOps deployments.
+* `Velero and Minio and rclone` (not implemented as part of this tutorial)
 
 ## helm
 
