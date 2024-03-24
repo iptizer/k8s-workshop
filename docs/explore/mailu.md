@@ -2,10 +2,10 @@
 
 MailU is a project that sets up a complete mail stack, including everything basically.
 
-!!!Note "Requires more than just servers"
-    Please note that a valid mail server setup also requires a valid domain and some DNS entries to work propperly. Meaning this try out here has limitted use, but still shows how mailu works.
+!!!Note "Not working correctly in local dev setup"
+    Due to the nature of mail servers and the complexity of the setup this will spin up and showcase a dovecot and some other tools, but it will not work correctly.
 
-# Setup
+## Setup
 
 Copy and paste the following value into `helm_mailu.yaml`.
 
