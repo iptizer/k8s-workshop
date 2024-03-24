@@ -72,8 +72,7 @@ nav:
     - MailU: explore/mailu.md
     - Databases: explore/databases.md
     - Appsmith: explore/appsmith.md
-  - Homeserver Setup:
-    - Overview: homeserver/overview.md
+  - Homeserver Setup: ./homeserver.md
 
 plugins:
   - search
