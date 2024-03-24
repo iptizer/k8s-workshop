@@ -2,7 +2,7 @@
 
 Wordpress is an easy way to set up your website. Installation with Kubernetes works in minutes.
 
-!!!Note "cert-amanger required"
+!!!Note "cert-manager required"
     Pre-installed cert-manager is required. See previous chapter.
 
 ## Setup
@@ -36,7 +36,7 @@ As printed by the chart the password name may be retrieved as follows. The usern
 echo $(kubectl get secret --namespace wordpress wordpress -o jsonpath="{.data.wordpress-password}" | base64 -d)
 ```
 
-## Teare down
+## Tear down
 
 To remove wordpress again execute as follows:
 
