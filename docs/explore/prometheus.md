@@ -37,6 +37,13 @@ alertmanager:
       kubernetes.io/ingress.class: "nginx"
       nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
       cert-manager.io/cluster-issuer: "selfsigned-issuer"
+  alertmanagerSpec:
+    alertmanagerConfigSelector:
+      matchExpressions:
+        - key: alertmanagerConfig
+          operator: In
+          values:
+            - thisnamehastomatch
 grafana:
   persistence:
     enabled: true
@@ -143,7 +150,7 @@ To see some io load stress, edit the deployment to produce io load instead of cp
 
 ### Alertmanager
 
-Where Grafana is mainly used for visualizing metrics, Prometheus for collecting metrics, Alertmanager is used to send alerts to various receivers.
+Where Grafana is mainly used for visualizing metrics, Prometheus for collecting metrics, Alertmanager is used to send alerts to various receivers. Copy and paste the following into a file called `alertmanager_config.yaml`. To make this actually work, you need to replace telegramtoken with an actual Telegram API token. You would also need to replace the chatID where the alerts are sent. Another alternative would be to configure another [receiver](https://prometheus.io/docs/alerting/latest/configuration/#email_config).
 
 ```yaml
 ---
@@ -187,4 +194,20 @@ spec:
       apiURL: "https://api.telegram.org"
       parseMode: "HTML"
   - name: blackhole
+```
+
+This config needs to be applied in every namespace where you want to have alerting. For example with the following config:
+
+```sh
+# alert configuration
+NAMESPACES_TO_ALERT=( kube-system monitoring cert-manager ingress-nginx )
+for i in "${NAMESPACES_TO_ALERT[@]}"; do
+  kubectl apply -f alertmanager_config.yaml -n $i
+done
+```
+
+## Tear down
+
+```sh
+helm uninstall -n monitoring prometheus-operator
 ```

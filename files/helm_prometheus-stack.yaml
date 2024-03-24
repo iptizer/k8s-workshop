@@ -26,6 +26,13 @@ alertmanager:
       kubernetes.io/ingress.class: "nginx"
       nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
       cert-manager.io/cluster-issuer: "selfsigned-issuer"
+  alertmanagerSpec:
+    alertmanagerConfigSelector:
+      matchExpressions:
+        - key: alertmanagerConfig
+          operator: In
+          values:
+            - thisnamehastomatch
 grafana:
   persistence:
     enabled: true
@@ -35,7 +42,7 @@ grafana:
   ingress:
     enabled: true
     hosts:
-    - grafana-127-0-0-1.nip.io
+    - grafana-127-0-0-1.nip.de
     tls:
     - hosts:
       - "grafana-127-0-0-1.nip.io"
