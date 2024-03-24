@@ -6,6 +6,10 @@ The idea is, that all apps can be tried out in the local setup. But also be used
 
 All used files can be found in the directory [`/files` within this repository](https://github.com/iptizer/k8s-workshop/tree/main/files).
 
+To round up the basics chapter start with:
+
+* `Kubeinvaders` to showcase Kubernetes deployments.
+
 Usually required basic infrastructure:
 
 * `OpenEBS` to provide Kubernetes volumes.

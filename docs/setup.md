@@ -89,7 +89,11 @@ minikube addons enable registry
 A huger `minikube start` command may look as follows. Note that CPU and MEMORY may already be limitted by your Docker runtime:
 
 ```sh
-minikube start --driver='docker' --addons='dashboard,ingress,metrics-server,registry' --memory='14g' --cpus='4'
+minikube start --driver='docker' --addons='dashboard,ingress,metrics-server,registry' \
+--memory='7g' --cpus='4'
+# for quick ramp up
+helm upgrade --install --create-namespace cert-manager jetstack/cert-manager -n cert-manager -f ./helm_cert-manager.yaml
+kubectl apply -f cert-manager_issuer.yaml
 ```
 
 ## Client tools

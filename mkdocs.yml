@@ -60,6 +60,7 @@ nav:
   - Kubernetes Basics: basics.md
   - Explore:
     - Overview: explore/overview.md
+    - Kubeinvaders: explore/kubeinvaders.md
     - OpenEBS: explore/openebs.md
     - Ingress: explore/ingress.md
     - Wordpress: explore/wordpress.md

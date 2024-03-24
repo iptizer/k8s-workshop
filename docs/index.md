@@ -35,7 +35,7 @@ Within this chapter a very short intro to Kubernetes will be given. The focus is
 
 This chapter will showcase a few projects that are easy to install, but would be very complex to be installed without Kubernetes superpowers. Parts of the examples are especially useful for the home setup and will be used in the homeserver setup.
 
-### [Homeserver](./homeserver/overview.md)
+### [Homeserver](./homeserver.md)
 
 This chapter focuses on the idea of using Kubernetes for homeserver setups. Knowledge from a few years "running in production" will be given. A tool called ["kubespray"](https://github.com/kubernetes-sigs/kubespray) will be introduced. Kubespray is a collection of Ansible playbooks enabling you to set up your home server.
 

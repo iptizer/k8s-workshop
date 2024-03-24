@@ -1,0 +1,32 @@
+hostnames: 
+    - mail-127-0-0-1.nip.io
+domain: mail-127-0-0-1.nip.io
+secretKey: verysecretkey
+
+initialAccount:
+  enabled: true
+  username: hans
+  domain: mail-127-0-0-1.nip.io
+  password: "dampf"
+
+ingress:
+  enabled: true
+  annotations:
+    cert-manager.io/cluster-issuer: "selfsigned-issuer"
+  tls: true
+
+redis:
+  enabled: true
+  architecture: standalone
+
+front:
+  resources:
+    requests:
+      memory: 10Mi
+      cpu: 10m
+    limits:
+      memory: 200Mi
+      cpu: 200m
+
+roundcube:
+  enabled: true
