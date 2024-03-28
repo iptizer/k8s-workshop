@@ -71,6 +71,8 @@ nav:
     - Appsmith: explore/appsmith.md
     - Backup: explore/backup.md
     - Monitoring: explore/prometheus.md
+    - ArgoCD: explore/argocd.md
+    - Crossplane: explore/crossplane.md
 
 
   - Homeserver Setup: ./homeserver.md

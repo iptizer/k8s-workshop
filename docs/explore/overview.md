@@ -32,6 +32,11 @@ Usefull extensions for day2 operations:
 * `ArgoCD` for GitOps deployments.
 * `Velero and Minio and rclone` (not implemented as part of this tutorial)
 
+Fancy stuff:
+
+* `ArgoCD` for gitops. (not yet implemented)
+* `Crossplane` for cloud native control plane. (not yet implemented)
+
 ## helm
 
 To deploy all these packages [the tool helm](https://helm.sh/docs/intro/quickstart/) is used. Helm is called "the package manager of Kubernetes". It works with a `values.yaml` file, which is used to template Kubernetes resources (other yamls).
