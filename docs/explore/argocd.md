@@ -46,7 +46,7 @@ As printed by the chart you can login with user=admin and retrieve the password 
 kubectl -n argocd get secret argocd-initial-admin-secret -o jsonpath="{.data.password}" | base64 -d
 ```
 
-Use the following web URL: [https://argocd-127-0-0-1.nip.io](argocd-127-0-0-1.nip.io)
+Use the following web URL: [https://argocd-127-0-0-1.nip.io](https://argocd-127-0-0-1.nip.io)
 
 Delete the easterhegg21 namespace with the following command `kubectl delete ns easterheg21` and verify with `kubectl get pods -n easterhegg21` which may take some time.
 
