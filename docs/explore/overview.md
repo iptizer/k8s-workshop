@@ -34,7 +34,7 @@ Usefull extensions for day2 operations:
 
 Fancy stuff:
 
-* `ArgoCD` for gitops. (not yet implemented)
+* `ArgoCD` for gitops.
 * `Crossplane` for cloud native control plane. (not yet implemented)
 
 ## helm

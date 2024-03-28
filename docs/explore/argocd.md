@@ -58,4 +58,15 @@ To add a demo app you can use the WebUI and proceed as follows:
 3. `kubectl apply -f ./files/argocd_easterheggapp.yaml`.
 4. Watch the app being deployed: [https://argocd-127-0-0-1.nip.io](https://argocd-127-0-0-1.nip.io)
 5. Access your app: [webserver-127-0-0-1.nip.io](https://webserver-127-0-0-1.nip.io)
-6. As nginx itself is a bit boring you can now either modify your Kubernetes manifests and push to the main branch. Or you change the branch that ArgoCD uses. Either via the web page. Or with applying a different manifest with `kubectl apply -f ./files/argocd_easterheggapp_kuardgreen.yaml`.
+6. As nginx itself is a bit boring you can now either modify your Kubernetes manifests and push to the main branch. Or you change the branch that ArgoCD uses. Either via the web page. Or with applying a different manifest with `kubectl apply -f ./files/argocd_easterheggapp_kuardgreen.yaml`. (Warning: The new app uses arm64 as architecture, which may be different for you.)
+
+Watch the diff between the two branches with this link: [https://github.com/iptizer/argocd-demo/compare/kuardgreen](https://github.com/iptizer/argocd-demo/compare/kuardgreen)
+
+## Tear down
+
+Remove argocd & the deployed app as follows:
+
+```sh
+helm uninstall -n argocd argocd
+kubectl remove namespace easterhegg21
+```
