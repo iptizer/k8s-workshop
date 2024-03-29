@@ -59,7 +59,7 @@ A container can be built with various tools. The most prominent one is "docker".
 
 ### challenge - docker build
 
-Please check the setup chapter for instructions to install the Docker Engine beforehand.
+Please check the setup chapter for instructions to install the Docker Engine (or equivalent) beforehand.
 
 To build a container you may copy and paste the following code into a file and give it the name `Dockerfile`.
 
@@ -92,11 +92,22 @@ To build and run the container execute the following commands from the same fold
 hello from the container
 ```
 
+In case you want to deep dive into the container, [install the tool dive](https://github.com/wagoodman/dive?tab=readme-ov-file#installation) and execute `dive myecho`. Or be crazy and observ the ubtuntu docker image with `dive ubuntu`.
+
+When you have activate the minikube registry (`minikube addons install registry`) it is also possible to push the image to this registry.
+
+Alternatively you can build the docker image directly "inside minikube".
+
+```sh
+❯ eval $(minikube -p minikube docker-env)
+❯ docker build -t myecho .
+```
+
 ## Kubernetes API
 
 The most essential concept within Kubernetes is the idea of a Kubernetes API. The Kubernetes API accepts requests. For example "start a container". After that the API (or related software which is called [controller](https://kubernetes.io/docs/concepts/architecture/controller/#controller-pattern)) will make sure that this container is started and keeps running.
 
-In other words: Define target situation via API. The rest taken care of by Kubernetes. This is referred to as "reconciliation loop".
+In other words: Define target situation via API. The rest is taken care of by Kubernetes. This is referred to as "reconciliation loop".
 
 ```mermaid
 graph LR
@@ -118,14 +129,6 @@ Install the tool `curl`. Curl can be used to send http requests to endpoints.
     * Hint: There is no further parameter required. The information lies on a different route.
 
 <!-- `curl http://localhost:8001/api/v1/namespaces/kube-system/pods` -->
-
-## Container
-
-A container (Docker container) is a normal Linux process (from the perspective of a server). Meaning: On a server that runs a postgres database container, the database process can be seen and the host has access to everything. (When you are root.)
-
-The trick lies in the view of the process. The process is isolated from the server it runs on. Meaning from within the container, there is no access to the host node. (It can be configured, but usually access is prevented.)
-
-The benefit of a container comes from the fact, that it is shipped including all required libraries. It also decouples "application data" and "peresistent data". This solves a lot of issues, for example "dependendency problems" and "application update process".
 
 ### challenge - minikube ssh
 
