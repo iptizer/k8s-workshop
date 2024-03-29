@@ -24,3 +24,5 @@ postgresql-ha:
   enabled: false
 postgresql:
   enabled: true
+redis-cluster:
+  enabled: false

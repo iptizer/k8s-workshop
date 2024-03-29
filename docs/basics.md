@@ -4,7 +4,7 @@ This chapter explains basics of Kubernetes. Every section has a theory chapter a
 
 Please note that for aktually getting software running in the next chapter, these concepts are good to know, but are not necessarily required to be understood in full detail. So don't worry if not everything is understood in this chapter.
 
-Some parts have a chicken and egg problem. Meaning that they require knowledge from a previous chapter. In case something is unclear, please ask during the workshop.
+Some parts have a chicken and egg problem. Meaning that they require knowledge from an upcoming chapter. In case something is unclear, please just ask during the workshop.
 
 ## yaml
 
@@ -45,7 +45,7 @@ Install the tool called [yq](https://github.com/mikefarah/yq). It is similar to 
 
 1. Save the yaml from above (pod) to a file called `pod.yaml`.
 2. Execute the following command on the shell: `yq . pod.yaml`.
-3. Alter the command to extract the "image" value (`nginx:1.14.2`).
+3. Alter the command to extract the "image" value (`nginx:1.14.2`). Hint: Use [this quick usage guide](https://github.com/mikefarah/yq?tab=readme-ov-file#quick-usage-guide).
 
 <!-- `yq '.["spec"]["containers"][0]["image"]' pod.yaml` -->
 

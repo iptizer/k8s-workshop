@@ -75,13 +75,15 @@ Setting up the cluster may look as follows:
 
 Minikube start will autoselect the best driver, but also accepts the option `--driver=''` to manually select the driver as discusseds in the previous section.
 
-Minikube also had addons which make additional functionalities easily available. The annons can be installed directly with `minikube start` with adding the addons as an option in a comma separated list like `--addons='ingress,metrics-server'`. Or after the cluster start as follows.
+Minikube also had addons which make additional functionalities easily available. The addons can be installed directly with `minikube start` with adding the addons as an option in a comma separated list like `--addons='ingress,metrics-server'`. Or after the cluster start as follows.
 
 ```sh
 # ingress is required later on
 minikube addons enable ingress
 # metrics server gathers resource usage and is nice to have
 minikube addons enable metrics-server
+# the Kubernetes dashboard
+minikube addons enable dashboard
 # registry can be used to push images (we'll see what this means later)
 minikube addons enable registry
 ```
@@ -109,6 +111,8 @@ When a cluster is running we could already send commands to the cluster. To do s
 * k9s (ncurse client application to quickly operate your cluster)
     * Download the binary and execute, for example from github.com.
     * Detailed instructions [here](https://k9scli.io/topics/install/).
+* kubectx & kubens
+    * Installation is explained [here](https://github.com/ahmetb/kubectx/tree/master?tab=readme-ov-file#installation).
 
 ## (optional) docker cli
 
