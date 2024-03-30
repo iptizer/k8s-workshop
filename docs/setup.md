@@ -145,7 +145,7 @@ The following commands may be used to verify that everything is working as expec
 # verify minikube
 minikube status
 # Verify tools are installed with help commands
-kuebctl -h
+kubectl -h
 helm -h
 k9s -h
 # kubectl - query for all running containers in cluster
