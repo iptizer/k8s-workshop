@@ -185,9 +185,8 @@ Try to edit your pod. This will fail and is not working.
 kubectl edit pod -n easterhegg21 webserver
 ```
 
-Find out more about your running pod with the command `kubectl describe`.
-
-Execute a shell on your webserver container. The command is called `kubectl exec`. Use `-h` with the command to find out more.
+1. Find out more about your running pod with the command `kubectl describe`.
+2. Execute a shell on your webserver container. The command is called `kubectl exec`. Use `-h` with the command to find out more.
 
 <!-- `kubectl describe pod -n easterhegg21 webserver` && `kubectl exec webserver -n easterhegg21 -it -- /bin/bash`. -->
 
