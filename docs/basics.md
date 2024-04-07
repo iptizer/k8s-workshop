@@ -179,12 +179,6 @@ Start the webserver with the following command:
 kubectl create -f pod.yaml -n easterhegg21
 ```
 
-Try to edit your pod. This will fail and is not working.
-
-```sh
-kubectl edit pod -n easterhegg21 webserver
-```
-
 1. Find out more about your running pod with the command `kubectl describe`.
 2. Execute a shell on your webserver container. The command is called `kubectl exec`. Use `-h` with the command to find out more.
 
